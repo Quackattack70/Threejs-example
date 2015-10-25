@@ -1,0 +1,35 @@
+canvas {
+ height: 100%;
+ width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+#up {
+  font-size: 50px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#down {
+  font-size: 50px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#left {
+  font-size: 50px;
+  margin-top: 10px;
+  width: 80px;
+  display: inline-block;
+}
+
+#right {
+  font-size: 50px;
+  margin-top: 10px;
+  margin-left: 550px;
+  display: inline-block;
+  width: 80px;
+}
