@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>webgl</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <script src="script.js"></script>
+  <div id="up">up</div>
+  <div id="left">left</div>
+  <div id="right">right</div>
+  <div id="down">down</div>
+  <script>
+   var scene = new THREE.Scene();
+   var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+   var renderer = new THREE.WebGLRenderer();
+   renderer.setSize( window.innerWidth, window.innerHeight );
+   document.body.appendChild( renderer.domElement );
+  
+   var geometry = new THREE.BoxGeometry( 2, 2, 2 );
+   var material = new THREE.MeshBasicMaterial( {
+   map: THREE.ImageUtils.loadTexture('http://bgfons.com/upload/brick_texture3326.jpg')
+   } );
+   var cube = new THREE.Mesh( geometry, material );
+   var cube2 = new THREE.Mesh(geometry, material);
+   scene.add( cube );
+
+   camera.position.z = 5;
+   
+   var isUp = "up";
+   
+   $("#up").click(function(){
+     isUp = "up";
+   });
+
+   $("#down").click(function(){
+     isUp = "down";
+   });
+   
+   $("#left").click(function(){
+     isUp = "left";
+   });
+   
+   $("#right").click(function(){
+     isUp = "right";
+   });
+   function render() {
+          requestAnimationFrame( render );
+     if (isUp == "up") cube.rotation.x -= 0.05;
+     if (isUp == "down") cube.rotation.x += 0.05;
+     if (isUp == "left") cube.rotation.z -= 0.05;
+     if (isUp == "right") cube.rotation.z += 0.05;
+          renderer.render( scene, camera );
+   }
+   render();
+  </script>
+
+</body>
+</html>
